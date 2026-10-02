@@ -1,44 +1,36 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version '1.18-SNAPSHOT' apply false
+    id 'fabric-loom' version '1.16-SNAPSHOT' apply false
 }
 
 allprojects {
     repositories {
         mavenCentral()
         maven { url = "https://maven.fabricmc.net/" }
-        maven { url = "https://repo1.maven.org/maven2/" }
     }
 }
 
 subprojects { proj ->
 
     apply plugin: 'java'
-    apply plugin: 'fabric-loom'  // Add this line
 
     group = "com.kwesou.press2hold"
 
+    // Base version (shared across all modules)
     def baseVersion = project.mod_version
 
     tasks.withType(JavaCompile).configureEach {
         options.encoding = "UTF-8"
     }
 
+    // Optional: consistent jar naming
     base {
         archivesName = proj.name
     }
 
-    // Add dependencies here
-    dependencies {
-        modImplementation "net.fabricmc:fabric-loader:0.19.5"  // Adjust version as needed
-        modImplementation "net.fabricmc.fabric-api:fabric-api:0.161.0+1.26.3"  // Adjust version
-        
-        // LWJGL - include specific modules
-        implementation "org.lwjgl:lwjgl:3.3.3"
-        implementation "org.lwjgl:lwjgl-glfw:3.3.3"
-    }
-
+    // Optional publishing setup (safe version)
     plugins.withId("maven-publish") {
+
         publishing {
             publications {
                 mavenJava(MavenPublication) {
