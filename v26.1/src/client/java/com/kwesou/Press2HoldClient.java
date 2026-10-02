@@ -60,7 +60,7 @@ public class Press2HoldClient implements ClientModInitializer {
         // KeyBindingHelper is now KeyMappingHelper in the new keymapping.v1 package
         toggleKey = KeyMappingHelper.registerKeyMapping(new KeyMapping(
                 "key.press2hold.latch",
-                InputConstants.Type.SCAN,  // Changed from KEYSYM
+                InputConstants.Type.KEYBOARD,
                 GLFW.GLFW_KEY_G,
                 category
         ));
@@ -186,8 +186,8 @@ public class Press2HoldClient implements ClientModInitializer {
             }
             case "Action" -> client.player.sendOverlayMessage(Component.nullToEmpty(msg));
             case "Title" -> {
-                client.gui.getTitle().setTimes(0, 50, 10);
-                client.gui.getTitle().setTitle(Component.literal(msg));
+                client.gui.setTimes(0, 50, 10);
+                client.gui.setTitle(Component.literal(msg));
             }
             default -> {
                 LOGGER.info("unknown display type: {}", displayType);
