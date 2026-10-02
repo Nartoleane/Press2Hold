@@ -7,30 +7,44 @@ allprojects {
     repositories {
         mavenCentral()
         maven { url = "https://maven.fabricmc.net/" }
+        maven { url = "https://repo1.maven.org/maven2/" }
     }
 }
 
 subprojects { proj ->
 
     apply plugin: 'java'
+    apply plugin: 'fabric-loom'  // Add this line
 
     group = "com.kwesou.press2hold"
 
-    // Base version (shared across all modules)
     def baseVersion = project.mod_version
 
     tasks.withType(JavaCompile).configureEach {
         options.encoding = "UTF-8"
     }
 
-    // Optional: consistent jar naming
     base {
         archivesName = proj.name
     }
 
-    // Optional publishing setup (safe version)
-    plugins.withId("maven-publish") {
+    // Add dependencies here
+    dependencies {
+        minecraft "com.mojang:minecraft:1.26.1"  // Adjust version to match your target
+        mappings loom.officialMojangMappings()
+        
+        modImplementation "net.fabricmc:fabric-loader:0.21.0"  // Adjust version as needed
+        modImplementation "net.fabricmc.fabric-api:fabric-api:0.121.5+1.26.1"  // Adjust version
+        
+        // LWJGL - include specific modules
+        implementation "org.lwjgl:lwjgl:3.3.3"
+        implementation "org.lwjgl:lwjgl-glfw:3.3.3"
+        
+        // Minecraft and Mojang libraries (usually handled by Fabric)
+        implementation "com.mojang:brigadier:1.0.18"
+    }
 
+    plugins.withId("maven-publish") {
         publishing {
             publications {
                 mavenJava(MavenPublication) {
