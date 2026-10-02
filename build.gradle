@@ -33,8 +33,8 @@ subprojects { proj ->
         minecraft "com.mojang:minecraft:1.26.1"  // Adjust version to match your target
         mappings loom.officialMojangMappings()
         
-        modImplementation "net.fabricmc:fabric-loader:0.21.0"  // Adjust version as needed
-        modImplementation "net.fabricmc.fabric-api:fabric-api:0.121.5+1.26.1"  // Adjust version
+        modImplementation "net.fabricmc:fabric-loader:0.19.5"  // Adjust version as needed
+        modImplementation "net.fabricmc.fabric-api:fabric-api:0.161.0+1.26.3"  // Adjust version
         
         // LWJGL - include specific modules
         implementation "org.lwjgl:lwjgl:3.3.3"
