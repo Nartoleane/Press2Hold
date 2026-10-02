@@ -28,5 +28,5 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v7
         with:
-          name: Language Reload
+          name: Press2Hold
           path: v26.1/build/libs/
