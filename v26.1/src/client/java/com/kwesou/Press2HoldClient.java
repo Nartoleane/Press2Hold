@@ -186,8 +186,8 @@ public class Press2HoldClient implements ClientModInitializer {
             }
             case "Action" -> client.player.sendOverlayMessage(Component.nullToEmpty(msg));
             case "Title" -> {
-                client.gui.setTimes(0, 50, 10);
-                client.gui.setTitle(Component.literal(msg));
+                client.gui.hud.setTimes(0, 50, 10);
+                client.gui.hud.setTitle(Component.literal(msg));
             }
             default -> {
                 LOGGER.info("unknown display type: {}", displayType);
