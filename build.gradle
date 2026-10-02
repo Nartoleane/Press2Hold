@@ -30,7 +30,7 @@ subprojects { proj ->
 
     // Add dependencies here
     dependencies {
-        minecraft "com.mojang:minecraft:1.26.1"  // Adjust version to match your target
+        minecraft "com.mojang:minecraft:1.26.3"  // Adjust version to match your target
         mappings loom.officialMojangMappings()
         
         modImplementation "net.fabricmc:fabric-loader:0.19.5"  // Adjust version as needed
