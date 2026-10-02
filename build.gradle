@@ -1,6 +1,6 @@
 plugins {
     id 'maven-publish'
-    id 'fabric-loom' version '1.16-SNAPSHOT' apply false
+    id 'fabric-loom' version '1.18-SNAPSHOT' apply false
 }
 
 allprojects {
